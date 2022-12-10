@@ -25,14 +25,14 @@ class TestData(unittest.TestCase):
     #     assert result is not None
     #     print(result)
     
-    # def test_api(self):
-    #     import requests
-    #     print(inspect.stack()[0][3])
-    #     url = 'http://api.seibro.or.kr/openapi/service/CorpSvc/getBuyreqSkeduInfoSvc'
-    #     params ={'serviceKey' : 'WHBfNB5rRra7bp6%2BeLY6y7S6LeV2ND0wEK1HfDundXXBh0aQaBul55hthD2aqzEbaBqlqRJT5WOxedsNP%2BcMiQ%3D%3D', 'rgtStdDt' : '20190708', 'issucoCustno' : '30411', 'pageNo' : '1', 'numOfRows' : '10' }
+    def test_api(self):
+        import requests
+        print(inspect.stack()[0][3])
+        url = 'http://api.seibro.or.kr/openapi/service/CorpSvc/getBuyreqSkeduInfoSvc'
+        params ={'serviceKey' : 'WHBfNB5rRra7bp6%2BeLY6y7S6LeV2ND0wEK1HfDundXXBh0aQaBul55hthD2aqzEbaBqlqRJT5WOxedsNP%2BcMiQ%3D%3D', 'rgtStdDt' : '20190708', 'issucoCustno' : '30411', 'pageNo' : '1', 'numOfRows' : '10' }
 
-    #     response = requests.get(url, params=params)
-    #     print(response.content)
+        response = requests.get(url, params=params)
+        print(response.content)
         
     def tearDown(self):
         pass
