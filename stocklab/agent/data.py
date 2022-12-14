@@ -31,10 +31,11 @@ class Data():
         root = ET.fromstring(res.text)
         from_tags = root.iter("items")
         result = {}
-        for item in from_tags:
-            if name in item.find('issucoNm').text.split():
-                result["issucoCustno"] = item.find('issucoCustno').text
-                result["issucoNm"] = item.find('issucoNm').text
+        for items in from_tags:
+            for item in items.iter('item'):
+                if name in item.find('issucoNm').text.split():
+                    result["issucoCustno"] = item.find('issucoCustno').text
+                    result["issucoNm"] = item.find('issucoNm').text
         return result
     
     def get_corp_info(self, code=None):
@@ -49,7 +50,8 @@ class Data():
         
         res = requests.get(request_url[:-1])
         root = ET.fromstring(res.text)
-        from_tags = root.iter("items")
+        # print("res.text:", res.text)
+        from_tags = root.iter("item")
         result = {}
         for item in from_tags:
             result["apliDt"] = item.find('apliDt').text
@@ -75,7 +77,7 @@ class Data():
         for k, v in query_params.items():
             request_url = request_url + k + "=" + v +"&"
         res = requests.get(request_url[:-1])
-        print(res.text)
+        # print("res.text:", res.text)
         root = ET.fromstring(res.text)
         from_tags = root.iter("items")
         result_list = []
